@@ -30,6 +30,9 @@ class Sorter
 		void readList(string f);
 		void copyNumArray(double* newArr);
 		void printCopyList(double* list);
+
+		void quickSortRec(double* arr, int left, int right);
+		int partition(double *a, int left, int right);
 };
 
 #endif

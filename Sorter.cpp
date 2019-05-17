@@ -33,8 +33,15 @@ void Sorter::printList()
 void Sorter::quickSort()
 {
 	cout << "Running QuickSort..." << endl;
-	//copyNumArray(quickArr);
-	printCopyList(quickArr);
+	time_t startTime, endTime;
+	time(&startTime); //mark start time
+
+	quickSortRec(quickArr, 0, arrSize-1);
+
+	time(&endTime); //mark end time
+
+	//printCopyList(quickArr);
+	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::insertionSort()
@@ -184,4 +191,73 @@ void Sorter::printCopyList(double* list)
 		cout << "[" << i << "] = " << setprecision(2) << fixed << list[i] << endl;
 		//std::setpricision sets decimal places to be outputted
 	}
+}
+
+///QUICKSORT FUNCS
+
+void Sorter::quickSortRec(double* arr, int left, int right)
+{
+	if (left >= right)
+        return;
+
+	//set parition/pivot
+    	int part = partition(arr, left, right);
+    	//cout << "QSC:" << left << "," << right << " part=" << part << endl;
+
+	//recursion
+	quickSortRec(arr, left, part - 1);
+    	quickSortRec(arr, part + 1, right);
+}
+
+int Sorter::partition(double *arr, int left, int right)
+{
+	const int mid = left + (right - left) / 2;
+    	const int pivot = arr[mid];
+
+    	// move the mid point value to the front.
+    	swap(arr[mid],arr[left]);
+    	int i = left + 1;
+    	int j = right;
+    	while (i <= j) { //for all cases that left <= right
+
+		//move left while item < pivot
+		while(i <= j && arr[i] <= pivot)
+            		i++;
+
+		//move right while item > pivot
+        	while(i <= j && arr[j] > pivot)
+            		j--;
+
+        	if (i < j)
+            		swap(arr[i], arr[j]);
+    	}
+
+	swap(arr[i - 1],arr[left]);
+    	return i - 1;
+
+	/**
+	int left, right;
+  	double *pivot_item;
+  	pivot_item = a[low];
+  	pivot = left = low;
+  	right = high;
+  	while ( left < right )
+	{
+    		//Move left while item < pivot
+    		while( a[left] <= pivot_item )
+			left++;
+
+		//Move right while item > pivot
+    		while( a[right] > pivot_item )
+			right--;
+
+		if (left < right)
+			SWAP(a,left,right);
+    	}
+
+	//right is final position for the pivot
+  	a[low] = a[right];
+  	a[right] = pivot_item;
+  	return right;
+	**/
 }

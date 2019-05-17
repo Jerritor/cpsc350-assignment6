@@ -23,7 +23,7 @@ int main(int argc, char** argv)
 		sorter.bubbleSort();
 		sorter.selectionSort();
 		sorter.insertionSort();
-		//sorter.quickSort();
+		sorter.quickSort();
 	}
 	else //wrong num of args
 	{
