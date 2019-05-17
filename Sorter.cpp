@@ -2,6 +2,8 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+#include <ctime>
+#include <chrono>
 
 using namespace std;
 
@@ -38,6 +40,9 @@ void Sorter::quickSort()
 void Sorter::insertionSort()
 {
 	cout << "Running InsertionSort..." << endl;
+	time_t startTime, endTime;
+	time(&startTime); //mark start time
+
 	for (int j = 1; j < arrSize; j++)
 	{
 		double temp = insertionArr[j]; //store marked item
@@ -52,12 +57,40 @@ void Sorter::insertionSort()
 		insertionArr[k] = temp; //place item
 	}
 
+	time(&endTime); //mark end time
+
 	//printCopyList(insertionArr);
+	//cout << "startTime: " << startTime << endl;
+	//cout << "endTime: " << endTime << endl;
+	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::bubbleSort()
 {
+	cout << "Running BubbleSort..." << endl;
+	time_t startTime, endTime;
+	time(&startTime); //mark start time
 
+	int num1, num2;
+	for(int i = 0; i < arrSize; i++)
+	{
+		for(int j = 0; j < arrSize-1; j++)
+		{
+			if (bubbleArr[j] > bubbleArr[j+1])
+			{
+				int tmp = bubbleArr[j]; //hold smaller val
+				bubbleArr[j] = bubbleArr[j+1]; //swap values
+				bubbleArr[j+1] = tmp; //set [j+1] to bigger val
+			}
+		}
+	}
+
+	time(&endTime); //mark end time
+
+	//printCopyList(bubbleArr);
+	//cout << "startTime: " << startTime << endl;
+	//cout << "endTime: " << endTime << endl;
+	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::selectionSort()
@@ -127,7 +160,7 @@ void Sorter::printCopyList(double* list)
 	cout << "arrSize: " << arrSize << endl;
 	for (int i = 0; i < arrSize; i++)
 	{
-		cout << "[" << i << "] = " << setprecision(9) << list[i] << endl;
+		cout << "[" << i << "] = " << setprecision(7) << list[i] << endl;
 		//std::setpricision sets decimal places to be outputted
 	}
 }

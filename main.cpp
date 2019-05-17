@@ -14,12 +14,15 @@ int main(int argc, char** argv)
 		string filename = argv[1]; //set filename
 		cout << "filename: " << filename << endl;
 
+		cout << "Initializing sorter..." << endl;
 		Sorter sorter(filename);
-		sorter.printList();
+		cout << "Arrays populated." << endl;
+		//sorter.printList();
 
 		//sorting
 		//sorter.quickSort();
 		sorter.insertionSort();
+		sorter.bubbleSort();
 	}
 	else //wrong num of args
 	{
