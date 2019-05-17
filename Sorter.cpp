@@ -15,6 +15,26 @@ Sorter::~Sorter()
 	delete[] numArray;
 }
 
+//======PUBLIC METHODS======
+void Sorter::printList()
+{
+	if (arrSize == -1 || numArray == NULL) //something wrong
+	{
+		cout << "Something isn't right. Make sure the inputted file has the right data formatting." << endl;
+	}
+	else
+	{
+		cout << "===PRINTING===" << endl;
+		cout << "arrSize: " << arrSize << endl;
+		for (int i = 0; i < arrSize; i++)
+		{
+			cout << "[" << i << "] = " << setprecision(9) << numArray[i] << endl;
+			//std::setpricision sets decimal places to be outputted
+		}
+	}
+}
+
+//======PRIVATE METHODS======
 void Sorter::readList(string file)
 {
 	ifstream inputStream;
@@ -49,24 +69,6 @@ void Sorter::readList(string file)
 	}
 
 	inputStream.close();
-}
-
-void Sorter::printList()
-{
-	if (arrSize == -1 || numArray == NULL) //something wrong
-	{
-		cout << "Something isn't right. Make sure the inputted file has the right data formatting." << endl;
-	}
-	else
-	{
-		cout << "===PRINTING===" << endl;
-		cout << "arrSize: " << arrSize << endl;
-		for (int i = 0; i < arrSize; i++)
-		{
-			cout << "[" << i << "] = " << setprecision(9) << numArray[i] << endl;
-			//std::setpricision sets decimal places to be outputted
-		}
-	}
 }
 
 void Sorter::quickSort()
