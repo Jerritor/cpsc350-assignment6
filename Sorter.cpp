@@ -1,6 +1,7 @@
 #include "Sorter.h"
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 
 using namespace std;
 
@@ -39,13 +40,10 @@ void Sorter::readList(string file)
 		}
 		else //numbers to be read
 		{
-			if (counter > arrSize) //counter > nums to be counted
-			{
-				cout << "Stopped counting." << endl;
+			if (counter > arrSize) //not >= bc line 0 doesnt count
 				break;
-			}
-			//counter-1 bc else starts at counter = 1
-			numArray[counter-1] = curr; //add num to numArray
+			else //counter-1 bc else starts at counter = 1
+				numArray[counter-1] = curr; //add num to numArray
 		}
 		counter++;
 	}
@@ -65,7 +63,8 @@ void Sorter::printList()
 		cout << "arrSize: " << arrSize << endl;
 		for (int i = 0; i < arrSize; i++)
 		{
-			cout << "[" << i << "] = " << numArray[i] << endl;
+			cout << "[" << i << "] = " << setprecision(9) << numArray[i] << endl;
+			//std::setpricision sets decimal places to be outputted
 		}
 	}
 }
