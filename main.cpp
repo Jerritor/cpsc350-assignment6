@@ -20,9 +20,10 @@ int main(int argc, char** argv)
 		//sorter.printList();
 
 		//sorting
-		//sorter.quickSort();
-		sorter.insertionSort();
 		sorter.bubbleSort();
+		sorter.selectionSort();
+		sorter.insertionSort();
+		//sorter.quickSort();
 	}
 	else //wrong num of args
 	{

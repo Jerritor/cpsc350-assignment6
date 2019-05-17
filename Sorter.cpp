@@ -78,7 +78,7 @@ void Sorter::bubbleSort()
 		{
 			if (bubbleArr[j] > bubbleArr[j+1])
 			{
-				int tmp = bubbleArr[j]; //hold smaller val
+				double tmp = bubbleArr[j]; //hold smaller val
 				bubbleArr[j] = bubbleArr[j+1]; //swap values
 				bubbleArr[j+1] = tmp; //set [j+1] to bigger val
 			}
@@ -95,7 +95,28 @@ void Sorter::bubbleSort()
 
 void Sorter::selectionSort()
 {
+	cout << "Running SelectionSort..." << endl;
+	time_t startTime, endTime;
+	time(&startTime); //mark start time
 
+	int minIndex;
+	for(int i = 0; i < arrSize; i++)
+	{
+		//find minimum element index
+		minIndex = i;
+		for(int j = i+1; j < arrSize+1; j++)
+			if (selectionArr[j] < selectionArr[minIndex])
+				minIndex = j;
+
+		//swap min element with selectionArr[i]
+		double tmp = selectionArr[minIndex]; //hold smaller val
+		selectionArr[minIndex] = selectionArr[i]; //swap values
+		selectionArr[i] = tmp; //set [i] to bigger val
+	}
+
+	time(&endTime); //mark end time
+	//printCopyList(selectionArr);
+	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 //======PRIVATE METHODS======
@@ -160,7 +181,7 @@ void Sorter::printCopyList(double* list)
 	cout << "arrSize: " << arrSize << endl;
 	for (int i = 0; i < arrSize; i++)
 	{
-		cout << "[" << i << "] = " << setprecision(7) << list[i] << endl;
+		cout << "[" << i << "] = " << setprecision(2) << fixed << list[i] << endl;
 		//std::setpricision sets decimal places to be outputted
 	}
 }
