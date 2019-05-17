@@ -16,6 +16,10 @@ int main(int argc, char** argv)
 
 		Sorter sorter(filename);
 		sorter.printList();
+
+		//sorting
+		//sorter.quickSort();
+		sorter.insertionSort();
 	}
 	else //wrong num of args
 	{
