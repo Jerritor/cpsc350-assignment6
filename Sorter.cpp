@@ -39,6 +39,11 @@ void Sorter::readList(string file)
 		}
 		else //numbers to be read
 		{
+			if (counter > arrSize) //counter > nums to be counted
+			{
+				cout << "Stopped counting." << endl;
+				break;
+			}
 			//counter-1 bc else starts at counter = 1
 			numArray[counter-1] = curr; //add num to numArray
 		}
