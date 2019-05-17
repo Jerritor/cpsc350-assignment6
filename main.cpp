@@ -13,6 +13,9 @@ int main(int argc, char** argv)
 	{
 		string filename = argv[1]; //set filename
 		cout << "filename: " << filename << endl;
+
+		Sorter sorter(filename);
+		sorter.printList();
 	}
 	else //wrong num of args
 	{

@@ -9,12 +9,14 @@ class Sorter
 {
 	public:
 		Sorter(string file);
+		~Sorter();
+
+		void printList();
 	private:
 		double* numArray; //initalized in constructor
-		int arrSize;
+		int arrSize = -1;
 
 		void readList(string f);
-		void printList();
 
 		void quickSort();
 		void insertionSort();
