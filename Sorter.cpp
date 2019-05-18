@@ -33,22 +33,33 @@ void Sorter::printList()
 void Sorter::quickSort()
 {
 	cout << "Running QuickSort..." << endl;
-	time_t startTime, endTime;
-	time(&startTime); //mark start time
+	//time_t startTime, endTime;
+	//time(&startTime); //mark start time
+	chrono::time_point<chrono::system_clock> start, end;  //millisecond timer
+	start = chrono::system_clock::now();
 
 	quickSortRec(quickArr, 0, arrSize-1);
 
-	time(&endTime); //mark end time
+	end = chrono::system_clock::now();
+	//time(&endTime); //mark end time
 
 	//printCopyList(quickArr);
-	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
+	chrono::duration<double> timeElapsed = end - start;
+
+	//<chrono> version
+	cout << "Elapsed: " << timeElapsed.count() << " secs." << endl;
+
+	//<ctime> version
+	//cout << "Elapsed(2): " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::insertionSort()
 {
 	cout << "Running InsertionSort..." << endl;
-	time_t startTime, endTime;
-	time(&startTime); //mark start time
+	//time_t startTime, endTime;
+	//time(&startTime); //mark start time
+	chrono::time_point<chrono::system_clock> start, end;  //millisecond timer
+	start = chrono::system_clock::now();
 
 	for (int j = 1; j < arrSize; j++)
 	{
@@ -64,19 +75,24 @@ void Sorter::insertionSort()
 		insertionArr[k] = temp; //place item
 	}
 
-	time(&endTime); //mark end time
+	end = chrono::system_clock::now();
+	//time(&endTime); //mark end time
+	chrono::duration<double> timeElapsed = end - start;
+	cout << "Elapsed: " << timeElapsed.count() << " secs." << endl;
 
 	//printCopyList(insertionArr);
 	//cout << "startTime: " << startTime << endl;
 	//cout << "endTime: " << endTime << endl;
-	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
+	//cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::bubbleSort()
 {
 	cout << "Running BubbleSort..." << endl;
-	time_t startTime, endTime;
-	time(&startTime); //mark start time
+	//time_t startTime, endTime;
+	//time(&startTime); //mark start time
+	chrono::time_point<chrono::system_clock> start, end;  //millisecond timer
+	start = chrono::system_clock::now();
 
 	int num1, num2;
 	for(int i = 0; i < arrSize; i++)
@@ -92,19 +108,24 @@ void Sorter::bubbleSort()
 		}
 	}
 
-	time(&endTime); //mark end time
+	end = chrono::system_clock::now();
+	//time(&endTime); //mark end time
+	chrono::duration<double> timeElapsed = end - start;
+	cout << "Elapsed: " << timeElapsed.count() << " secs." << endl;
 
 	//printCopyList(bubbleArr);
 	//cout << "startTime: " << startTime << endl;
 	//cout << "endTime: " << endTime << endl;
-	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
+	//cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 void Sorter::selectionSort()
 {
 	cout << "Running SelectionSort..." << endl;
-	time_t startTime, endTime;
-	time(&startTime); //mark start time
+	//time_t startTime, endTime;
+	//time(&startTime); //mark start time
+	chrono::time_point<chrono::system_clock> start, end;  //millisecond timer
+	start = chrono::system_clock::now();
 
 	int minIndex;
 	for(int i = 0; i < arrSize; i++)
@@ -121,9 +142,13 @@ void Sorter::selectionSort()
 		selectionArr[i] = tmp; //set [i] to bigger val
 	}
 
-	time(&endTime); //mark end time
+	end = chrono::system_clock::now();
+
+	chrono::duration<double> timeElapsed = end - start;
+	cout << "Elapsed: " << timeElapsed.count() << " secs." << endl;
+	//time(&endTime); //mark end time
 	//printCopyList(selectionArr);
-	cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
+	//cout << "Elapsed: " << difftime(endTime, startTime) << " secs." << endl;
 }
 
 //======PRIVATE METHODS======
